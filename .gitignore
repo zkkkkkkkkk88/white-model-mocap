@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+.white_model_mocap_*/
+*.blend[0-9]
+*.task

@@ -47,6 +47,7 @@ for (const player of document.querySelectorAll('section[data-offset]')) {
     try {
       if (!referenceReady) {
         referenceReady = waitFor(reference, 'loadedmetadata');
+        reference.preload = 'auto';
         reference.src = upstream + reference.dataset.file;
       }
       await referenceReady;
@@ -59,6 +60,8 @@ for (const player of document.querySelectorAll('section[data-offset]')) {
     } catch {
       model.pause();
       reference.pause();
+      reference.removeAttribute('src');
+      reference.load();
       referenceReady = undefined;
       status.textContent = '播放失败。可重试，或打开下方的原片链接。';
     } finally {
